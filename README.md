@@ -6,3 +6,11 @@ IPL Matches Data Analysis Using Spark
  ***
 `Problem Statement 1: which stadium is best suited to bat first?`<br>
 `Steps will be available soon`
+<br><br>Finding the total number of matches played on each stadium<br>
+```Scala
+val data = sc.textFile("file:///home/root/Documents/datasets/matches.csv") //bringing the file from local
+ 
+val filtering_bad_records1 = data.map(line=>line.split(",")).filter(x=>x.length<19)
+ 
+val total_matches_per_venue = filtering_bad_records.map(x=>(x(14),1)).reduceByKey(_+_).map(item => item.swap).sortByKey(false).collect.foreach(println)
+```
