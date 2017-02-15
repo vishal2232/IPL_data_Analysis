@@ -5,7 +5,7 @@ IPL Matches Data Analysis Using Spark
  id,season,city,date,team1,team2,toss_winner,toss_decision,result,dl_applied,winner,win_by_runs,win_by_wickets,player_of_match,venue,umpire1,umpire2,umpire3<br>
  ***
 `Problem Statement 1: which stadium is best suited to bat first?`<br>
-`Steps will be available soon`
+
 <br><br>Take out the columns toss_decision, won_by_runs, won_by_wickets and venue. <br>
 ```Scala
 val data = sc.textFile("file:///home/Vishal/Documents/datasets/matches.csv")
