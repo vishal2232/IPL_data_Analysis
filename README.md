@@ -12,8 +12,13 @@ val data = sc.textFile("file:///home/Vishal/Documents/datasets/matches.csv")
  
 val filtering_bad_records = data.map(line=>line.split(",")).filter(x=>x.length<19)
  
-val extracting_columns = filtering_bad_records.map(x=>(x(7),x(11),x(12),x(14)))
+vals extracting_columns = filtering_bad_records.map(x=>(x(7),x(11),x(12),x(14)))
  
 val bat_first_won = extracting_columns.filter(x=>x._2!="0").map(x=>(x._4,1)) .reduceByKey(_+_).map(item => item.swap).sortByKey(false).collect.foreach(println)
 
+```
+Now calculate the winning percentage of each stadium for first_bat_won.
+
+```Scala
+val join = bat_first_won.join(total_matches_per_venue).map(x=>(x._1,(x._2._1*100/x._2._2))).map(item => item.swap).sortByKey(false).collect.foreach(println)
 ```
