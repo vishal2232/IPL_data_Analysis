@@ -24,3 +24,8 @@ val join = bat_first_won.join(total_matches_per_venue).map(x=>(x._1,(x._2._1*100
 ```
 ***
 `Problem Statement 2: Which stadium is best suitable for first bowling?`<br>
+```Scala
+val extracting_columns = filtering_bad_records.map(x=>(x(7),x(11),x(12),x(14)))
+ 
+val bowl_first_won = extracting_columns.filter(x=>x._3!="0").map(x=>(x._4,1)) .reduceByKey(_+_).map(item => item.swap).sortByKey(false).collect.foreach(println)
+```
